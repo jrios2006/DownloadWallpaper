@@ -13,3 +13,6 @@ FILENAME=$(basename "${URL}")
 #cd "/home/${USER}/Imágenes/wallpaperswide"
 cd "/Fotos/wallpaperswide"
 curl --cookie /tmp/wallpaperswide.cookie -A "${UA}" "${URL}" -o "${CAT}-${FILENAME}" #&& /usr/local/bin/waffle.sh last
+# Si falla el comando curl se genera un fichero de 0 bytes, para no generar baseura conviene borrarlos
+echo "Borrando ficheros de 0 bytes"
+find $cd -size 0c -delete
